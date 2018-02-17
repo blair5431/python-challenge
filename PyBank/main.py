@@ -27,21 +27,44 @@ with open (file_name, 'r', newline='') as budget1_file:
     #cacluating average difference 
     for date, rev in enumerate(budget_list):
         if date + 1 < month_count:
-            diff = int(budget_list[date+1][1])
+            diff = int(budget_list[date+1][1]) - int(budget_list[date][1])
             total_diff = total_diff + diff
             avg_diff = round(total_diff/month_count,2)
-            max_rev = max(rev)
-            min_rev = min(rev)
+            diff_new.append(diff)
         
-        if rev == max_rev:
-            print(rev)
-            
-        if rev == min_rev:
-            print(rev[0])
+    #print(diff_new)
+    
+    #creating list of absolue values of revenue differences
+    diff_absolute =[]
+    for row in diff_new:
+        diff_absolute.append(abs(row))
+        
+    #print(diff_absolute)
+    
+    #calculating the max and min revenue difference
+    max_rev = max(diff_absolute)
+    min_rev = min(diff_absolute)
+    #print(max_rev)
+    #print(min_rev)
+    min_index=(diff_absolute.index(min_rev))
+    max_index=(diff_absolute.index(max_rev))
+    #print(min_index)
+    #print(max_index)
+    #print(diff_absolute)
+    #print(max_rev)
+    #print(min_rev)
             
         
     print("Average Revenue Change: " + "$" + str(avg_diff))
-    print("Greatest Increase in Revenue: " + str(max_rev))
-    print("Greatest Decrease in Revenue: " + "$" + str(min_rev))
+    print("Greatest Increase in Revenue: " + str(budget_list[max_index+1][0])+ " $" +str(diff_new[max_index]))
+    print("Greatest Decrease in Revenue: " + str(budget_list[min_index+1][0])+ " $" +str(diff_new[min_index]))
+    
+    with open('output.txt', 'w') as out_file:
+    out_file.write(("Total Months: " + str(month_count))+ "\n")
+    out_file.write("Total Revenue: " + "$" + str(total_rev)+ "\n")
+    out_file.write("Average Revenue Change: " + "$" + str(avg_diff) +"\n")
+    out_file.write("Greatest Increase in Revenue: " + str(budget_list[max_index+1][0])+ " $" +str(diff_new[max_index])+ "\n")
+    out_file.write("Greatest Decrease in Revenue: " + str(budget_list[min_index+1][0])+ " $" +str(diff_new[min_index])+ "\n")
+   
     
     
