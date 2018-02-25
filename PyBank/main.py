@@ -60,11 +60,11 @@ with open (file_name, 'r', newline='') as budget1_file:
     print("Greatest Decrease in Revenue: " + str(budget_list[min_index+1][0])+ " $" +str(diff_new[min_index]))
     
     with open('output.txt', 'w') as out_file:
-    out_file.write(("Total Months: " + str(month_count))+ "\n")
-    out_file.write("Total Revenue: " + "$" + str(total_rev)+ "\n")
-    out_file.write("Average Revenue Change: " + "$" + str(avg_diff) +"\n")
-    out_file.write("Greatest Increase in Revenue: " + str(budget_list[max_index+1][0])+ " $" +str(diff_new[max_index])+ "\n")
-    out_file.write("Greatest Decrease in Revenue: " + str(budget_list[min_index+1][0])+ " $" +str(diff_new[min_index])+ "\n")
-   
+        out_file.write(("Total Months: " + str(month_count))+ "\n")
+        out_file.write("Total Revenue: " + "$" + str(total_rev)+ "\n")
+        out_file.write("Average Revenue Change: " + "$" + str(avg_diff) +"\n")
+        out_file.write("Greatest Increase in Revenue: " + str(budget_list[max_index+1][0])+ " $" +str(diff_new[max_index])+ "\n")
+        out_file.write("Greatest Decrease in Revenue: " + str(budget_list[min_index+1][0])+ " $" +str(diff_new[min_index])+ "\n")
     
+        
     
